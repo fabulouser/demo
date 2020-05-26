@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.Person">
+  <resultMap id="BaseResultMap" type="com.example.demo.entity.Person">
+    <!--@mbg.generated-->
+    <!--@Table person-->
+    <id column="person_id" jdbcType="INTEGER" property="personId" />
+    <result column="phone" jdbcType="BIGINT" property="phone" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="age" jdbcType="INTEGER" property="age" />
+    <result column="flag" jdbcType="TINYINT" property="flag" />
+    <result column="created" jdbcType="TIMESTAMP" property="created" />
+    <result column="modified" jdbcType="TIMESTAMP" property="modified" />
+    <result column="salary" jdbcType="DECIMAL" property="salary" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    person_id, phone, `name`, age, flag, created, modified, salary
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from person
+    where person_id = #{personId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from person
+    where person_id = #{personId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="person_id" keyProperty="personId" parameterType="com.example.demo.entity.Person" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into person (phone, `name`, age, 
+      flag, created, modified, 
+      salary)
+    values (#{phone,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER}, 
+      #{flag,jdbcType=TINYINT}, #{created,jdbcType=TIMESTAMP}, #{modified,jdbcType=TIMESTAMP}, 
+      #{salary,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" keyColumn="person_id" keyProperty="personId" parameterType="com.example.demo.entity.Person" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into person
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="age != null">
+        age,
+      </if>
+      <if test="flag != null">
+        flag,
+      </if>
+      <if test="created != null">
+        created,
+      </if>
+      <if test="modified != null">
+        modified,
+      </if>
+      <if test="salary != null">
+        salary,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="phone != null">
+        #{phone,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null">
+        #{age,jdbcType=INTEGER},
+      </if>
+      <if test="flag != null">
+        #{flag,jdbcType=TINYINT},
+      </if>
+      <if test="created != null">
+        #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modified != null">
+        #{modified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="salary != null">
+        #{salary,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.entity.Person">
+    <!--@mbg.generated-->
+    update person
+    <set>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null">
+        age = #{age,jdbcType=INTEGER},
+      </if>
+      <if test="flag != null">
+        flag = #{flag,jdbcType=TINYINT},
+      </if>
+      <if test="created != null">
+        created = #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modified != null">
+        modified = #{modified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="salary != null">
+        salary = #{salary,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where person_id = #{personId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.entity.Person">
+    <!--@mbg.generated-->
+    update person
+    set phone = #{phone,jdbcType=BIGINT},
+      `name` = #{name,jdbcType=VARCHAR},
+      age = #{age,jdbcType=INTEGER},
+      flag = #{flag,jdbcType=TINYINT},
+      created = #{created,jdbcType=TIMESTAMP},
+      modified = #{modified,jdbcType=TIMESTAMP},
+      salary = #{salary,jdbcType=DECIMAL}
+    where person_id = #{personId,jdbcType=INTEGER}
+  </update>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update person
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="phone = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when person_id = #{item.personId,jdbcType=INTEGER} then #{item.phone,jdbcType=BIGINT}
+        </foreach>
+      </trim>
+      <trim prefix="`name` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when person_id = #{item.personId,jdbcType=INTEGER} then #{item.name,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="age = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when person_id = #{item.personId,jdbcType=INTEGER} then #{item.age,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="flag = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when person_id = #{item.personId,jdbcType=INTEGER} then #{item.flag,jdbcType=TINYINT}
+        </foreach>
+      </trim>
+      <trim prefix="created = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when person_id = #{item.personId,jdbcType=INTEGER} then #{item.created,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+      <trim prefix="modified = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when person_id = #{item.personId,jdbcType=INTEGER} then #{item.modified,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+      <trim prefix="salary = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when person_id = #{item.personId,jdbcType=INTEGER} then #{item.salary,jdbcType=DECIMAL}
+        </foreach>
+      </trim>
+    </trim>
+    where person_id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.personId,jdbcType=INTEGER}
+    </foreach>
+  </update>
+  <insert id="batchInsert" keyColumn="person_id" keyProperty="personId" parameterType="map" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into person
+    (phone, `name`, age, flag, created, modified, salary)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.phone,jdbcType=BIGINT}, #{item.name,jdbcType=VARCHAR}, #{item.age,jdbcType=INTEGER}, 
+        #{item.flag,jdbcType=TINYINT}, #{item.created,jdbcType=TIMESTAMP}, #{item.modified,jdbcType=TIMESTAMP}, 
+        #{item.salary,jdbcType=DECIMAL})
+    </foreach>
+  </insert>
+  <insert id="insertOrUpdate" keyColumn="person_id" keyProperty="personId" parameterType="com.example.demo.entity.Person" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into person
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="personId != null">
+        person_id,
+      </if>
+      phone,
+      `name`,
+      age,
+      flag,
+      created,
+      modified,
+      salary,
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="personId != null">
+        #{personId,jdbcType=INTEGER},
+      </if>
+      #{phone,jdbcType=BIGINT},
+      #{name,jdbcType=VARCHAR},
+      #{age,jdbcType=INTEGER},
+      #{flag,jdbcType=TINYINT},
+      #{created,jdbcType=TIMESTAMP},
+      #{modified,jdbcType=TIMESTAMP},
+      #{salary,jdbcType=DECIMAL},
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="personId != null">
+        person_id = #{personId,jdbcType=INTEGER},
+      </if>
+      phone = #{phone,jdbcType=BIGINT},
+      `name` = #{name,jdbcType=VARCHAR},
+      age = #{age,jdbcType=INTEGER},
+      flag = #{flag,jdbcType=TINYINT},
+      created = #{created,jdbcType=TIMESTAMP},
+      modified = #{modified,jdbcType=TIMESTAMP},
+      salary = #{salary,jdbcType=DECIMAL},
+    </trim>
+  </insert>
+  <insert id="insertOrUpdateSelective" keyColumn="person_id" keyProperty="personId" parameterType="com.example.demo.entity.Person" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into person
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="personId != null">
+        person_id,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="age != null">
+        age,
+      </if>
+      <if test="flag != null">
+        flag,
+      </if>
+      <if test="created != null">
+        created,
+      </if>
+      <if test="modified != null">
+        modified,
+      </if>
+      <if test="salary != null">
+        salary,
+      </if>
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="personId != null">
+        #{personId,jdbcType=INTEGER},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null">
+        #{age,jdbcType=INTEGER},
+      </if>
+      <if test="flag != null">
+        #{flag,jdbcType=TINYINT},
+      </if>
+      <if test="created != null">
+        #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modified != null">
+        #{modified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="salary != null">
+        #{salary,jdbcType=DECIMAL},
+      </if>
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="personId != null">
+        person_id = #{personId,jdbcType=INTEGER},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null">
+        age = #{age,jdbcType=INTEGER},
+      </if>
+      <if test="flag != null">
+        flag = #{flag,jdbcType=TINYINT},
+      </if>
+      <if test="created != null">
+        created = #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modified != null">
+        modified = #{modified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="salary != null">
+        salary = #{salary,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+</mapper>

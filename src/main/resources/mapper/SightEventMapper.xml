@@ -1,0 +1,483 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.SightEventMapper">
+  <resultMap id="BaseResultMap" type="com.example.demo.entity.SightEvent">
+    <!--@mbg.generated-->
+    <!--@Table sight_event-->
+    <id column="id" property="id" />
+    <result column="event_name" property="eventName" />
+    <result column="start_time" property="startTime" />
+    <result column="end_time" property="endTime" />
+    <result column="self_or_others" property="selfOrOthers" />
+    <result column="admin_id" property="adminId" />
+    <result column="event_type" property="eventType" />
+    <result column="region_id" property="regionId" />
+    <result column="event_status" property="eventStatus" />
+    <result column="remark" property="remark" />
+    <result column="created" property="created" />
+    <result column="modified" property="modified" />
+    <result column="is_deleted" property="isDeleted" />
+    <result column="version" property="version" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, event_name, start_time, end_time, self_or_others, admin_id, event_type, region_id, 
+    event_status, remark, created, modified, is_deleted, version
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from sight_event
+    where id = #{id}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from sight_event
+    where id = #{id}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.example.demo.entity.SightEvent" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into sight_event (event_name, start_time, end_time, self_or_others, admin_id, event_type, 
+      region_id, event_status, remark, created, modified, is_deleted, 
+      version)
+    values (#{eventName}, #{startTime}, #{endTime}, #{selfOrOthers}, #{adminId}, #{eventType}, 
+      #{regionId}, #{eventStatus}, #{remark}, #{created}, #{modified}, #{isDeleted}, 
+      #{version})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.example.demo.entity.SightEvent" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into sight_event
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="eventName != null">
+        event_name,
+      </if>
+      <if test="startTime != null">
+        start_time,
+      </if>
+      <if test="endTime != null">
+        end_time,
+      </if>
+      <if test="selfOrOthers != null">
+        self_or_others,
+      </if>
+      <if test="adminId != null">
+        admin_id,
+      </if>
+      <if test="eventType != null">
+        event_type,
+      </if>
+      <if test="regionId != null">
+        region_id,
+      </if>
+      <if test="eventStatus != null">
+        event_status,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="created != null">
+        created,
+      </if>
+      <if test="modified != null">
+        modified,
+      </if>
+      <if test="isDeleted != null">
+        is_deleted,
+      </if>
+      <if test="version != null">
+        version,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="eventName != null">
+        #{eventName},
+      </if>
+      <if test="startTime != null">
+        #{startTime},
+      </if>
+      <if test="endTime != null">
+        #{endTime},
+      </if>
+      <if test="selfOrOthers != null">
+        #{selfOrOthers},
+      </if>
+      <if test="adminId != null">
+        #{adminId},
+      </if>
+      <if test="eventType != null">
+        #{eventType},
+      </if>
+      <if test="regionId != null">
+        #{regionId},
+      </if>
+      <if test="eventStatus != null">
+        #{eventStatus},
+      </if>
+      <if test="remark != null">
+        #{remark},
+      </if>
+      <if test="created != null">
+        #{created},
+      </if>
+      <if test="modified != null">
+        #{modified},
+      </if>
+      <if test="isDeleted != null">
+        #{isDeleted},
+      </if>
+      <if test="version != null">
+        #{version},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.entity.SightEvent">
+    <!--@mbg.generated-->
+    update sight_event
+    <set>
+      <if test="eventName != null">
+        event_name = #{eventName},
+      </if>
+      <if test="startTime != null">
+        start_time = #{startTime},
+      </if>
+      <if test="endTime != null">
+        end_time = #{endTime},
+      </if>
+      <if test="selfOrOthers != null">
+        self_or_others = #{selfOrOthers},
+      </if>
+      <if test="adminId != null">
+        admin_id = #{adminId},
+      </if>
+      <if test="eventType != null">
+        event_type = #{eventType},
+      </if>
+      <if test="regionId != null">
+        region_id = #{regionId},
+      </if>
+      <if test="eventStatus != null">
+        event_status = #{eventStatus},
+      </if>
+      <if test="remark != null">
+        remark = #{remark},
+      </if>
+      <if test="created != null">
+        created = #{created},
+      </if>
+      <if test="modified != null">
+        modified = #{modified},
+      </if>
+      <if test="isDeleted != null">
+        is_deleted = #{isDeleted},
+      </if>
+      <if test="version != null">
+        version = #{version},
+      </if>
+    </set>
+    where id = #{id}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.entity.SightEvent">
+    <!--@mbg.generated-->
+    update sight_event
+    set event_name = #{eventName},
+      start_time = #{startTime},
+      end_time = #{endTime},
+      self_or_others = #{selfOrOthers},
+      admin_id = #{adminId},
+      event_type = #{eventType},
+      region_id = #{regionId},
+      event_status = #{eventStatus},
+      remark = #{remark},
+      created = #{created},
+      modified = #{modified},
+      is_deleted = #{isDeleted},
+      version = #{version}
+    where id = #{id}
+  </update>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update sight_event
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="event_name = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.eventName}
+        </foreach>
+      </trim>
+      <trim prefix="start_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.startTime}
+        </foreach>
+      </trim>
+      <trim prefix="end_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.endTime}
+        </foreach>
+      </trim>
+      <trim prefix="self_or_others = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.selfOrOthers}
+        </foreach>
+      </trim>
+      <trim prefix="admin_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.adminId}
+        </foreach>
+      </trim>
+      <trim prefix="event_type = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.eventType}
+        </foreach>
+      </trim>
+      <trim prefix="region_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.regionId}
+        </foreach>
+      </trim>
+      <trim prefix="event_status = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.eventStatus}
+        </foreach>
+      </trim>
+      <trim prefix="remark = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.remark}
+        </foreach>
+      </trim>
+      <trim prefix="created = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.created}
+        </foreach>
+      </trim>
+      <trim prefix="modified = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.modified}
+        </foreach>
+      </trim>
+      <trim prefix="is_deleted = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.isDeleted}
+        </foreach>
+      </trim>
+      <trim prefix="version = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.version}
+        </foreach>
+      </trim>
+    </trim>
+    where id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.id}
+    </foreach>
+  </update>
+  <insert id="batchInsert" keyColumn="id" keyProperty="id" parameterType="map" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into sight_event
+    (event_name, start_time, end_time, self_or_others, admin_id, event_type, region_id, 
+      event_status, remark, created, modified, is_deleted, version)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.eventName}, #{item.startTime}, #{item.endTime}, #{item.selfOrOthers}, #{item.adminId}, 
+        #{item.eventType}, #{item.regionId}, #{item.eventStatus}, #{item.remark}, #{item.created}, 
+        #{item.modified}, #{item.isDeleted}, #{item.version})
+    </foreach>
+  </insert>
+  <insert id="insertOrUpdate" keyColumn="id" keyProperty="id" parameterType="com.example.demo.entity.SightEvent" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into sight_event
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      event_name,
+      start_time,
+      end_time,
+      self_or_others,
+      admin_id,
+      event_type,
+      region_id,
+      event_status,
+      remark,
+      created,
+      modified,
+      is_deleted,
+      version,
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id},
+      </if>
+      #{eventName},
+      #{startTime},
+      #{endTime},
+      #{selfOrOthers},
+      #{adminId},
+      #{eventType},
+      #{regionId},
+      #{eventStatus},
+      #{remark},
+      #{created},
+      #{modified},
+      #{isDeleted},
+      #{version},
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="id != null">
+        id = #{id},
+      </if>
+      event_name = #{eventName},
+      start_time = #{startTime},
+      end_time = #{endTime},
+      self_or_others = #{selfOrOthers},
+      admin_id = #{adminId},
+      event_type = #{eventType},
+      region_id = #{regionId},
+      event_status = #{eventStatus},
+      remark = #{remark},
+      created = #{created},
+      modified = #{modified},
+      is_deleted = #{isDeleted},
+      version = #{version},
+    </trim>
+  </insert>
+  <insert id="insertOrUpdateSelective" keyColumn="id" keyProperty="id" parameterType="com.example.demo.entity.SightEvent" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into sight_event
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="eventName != null">
+        event_name,
+      </if>
+      <if test="startTime != null">
+        start_time,
+      </if>
+      <if test="endTime != null">
+        end_time,
+      </if>
+      <if test="selfOrOthers != null">
+        self_or_others,
+      </if>
+      <if test="adminId != null">
+        admin_id,
+      </if>
+      <if test="eventType != null">
+        event_type,
+      </if>
+      <if test="regionId != null">
+        region_id,
+      </if>
+      <if test="eventStatus != null">
+        event_status,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="created != null">
+        created,
+      </if>
+      <if test="modified != null">
+        modified,
+      </if>
+      <if test="isDeleted != null">
+        is_deleted,
+      </if>
+      <if test="version != null">
+        version,
+      </if>
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id},
+      </if>
+      <if test="eventName != null">
+        #{eventName},
+      </if>
+      <if test="startTime != null">
+        #{startTime},
+      </if>
+      <if test="endTime != null">
+        #{endTime},
+      </if>
+      <if test="selfOrOthers != null">
+        #{selfOrOthers},
+      </if>
+      <if test="adminId != null">
+        #{adminId},
+      </if>
+      <if test="eventType != null">
+        #{eventType},
+      </if>
+      <if test="regionId != null">
+        #{regionId},
+      </if>
+      <if test="eventStatus != null">
+        #{eventStatus},
+      </if>
+      <if test="remark != null">
+        #{remark},
+      </if>
+      <if test="created != null">
+        #{created},
+      </if>
+      <if test="modified != null">
+        #{modified},
+      </if>
+      <if test="isDeleted != null">
+        #{isDeleted},
+      </if>
+      <if test="version != null">
+        #{version},
+      </if>
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="id != null">
+        id = #{id},
+      </if>
+      <if test="eventName != null">
+        event_name = #{eventName},
+      </if>
+      <if test="startTime != null">
+        start_time = #{startTime},
+      </if>
+      <if test="endTime != null">
+        end_time = #{endTime},
+      </if>
+      <if test="selfOrOthers != null">
+        self_or_others = #{selfOrOthers},
+      </if>
+      <if test="adminId != null">
+        admin_id = #{adminId},
+      </if>
+      <if test="eventType != null">
+        event_type = #{eventType},
+      </if>
+      <if test="regionId != null">
+        region_id = #{regionId},
+      </if>
+      <if test="eventStatus != null">
+        event_status = #{eventStatus},
+      </if>
+      <if test="remark != null">
+        remark = #{remark},
+      </if>
+      <if test="created != null">
+        created = #{created},
+      </if>
+      <if test="modified != null">
+        modified = #{modified},
+      </if>
+      <if test="isDeleted != null">
+        is_deleted = #{isDeleted},
+      </if>
+      <if test="version != null">
+        version = #{version},
+      </if>
+    </trim>
+  </insert>
+</mapper>
