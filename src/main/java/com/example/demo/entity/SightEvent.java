@@ -24,7 +24,7 @@ public class SightEvent {
     private Date startTime;
 
     /**
-    *33 结束时间，测试3444
+    * 结束时间，测试6666
     */
     @ApiModelProperty(value="结束时间")
     private Date endTime;
@@ -60,7 +60,7 @@ public class SightEvent {
     private Integer eventStatus;
 
     /**
-    * 备注
+    * 备注6666
     */
     @ApiModelProperty(value="备注")
     private String remark;
